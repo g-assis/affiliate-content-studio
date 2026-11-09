@@ -32,7 +32,7 @@ export async function POST(request:NextRequest){
  try{
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),4500);
  try{
- const response=await fetch(url.toString(),{signal:controller.signal,redirect:"follow",headers:{"User-Agent":"Mozilla/5.0 (compatible; AffiliateContentStudio/0.2)"}});
+ const response=await fetch(url.toString(),{signal:controller.signal,redirect:"manual",headers:{"User-Agent":"Mozilla/5.0 (compatible; AffiliateContentStudio/0.2)"}});
  const final=new URL(response.url);
  if(response.ok&&hostAllowed(final.hostname.toLowerCase())&&(response.headers.get("content-type")||"").includes("text/html")){
  const html=(await response.text()).slice(0,400000);
